@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuoma</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Astro" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+
+<body>
+<body>
+
+  <main class="container">
+    <h1>Nuomos skaičiavimas</h1>
+
+    <label for="vanduo">Vanduo</label>
+    <input id="vanduo" type="number" placeholder="Įveskite vandens sumą">
+
+    <label for="elektra">Elektra</label>
+    <input id="elektra" type="number" placeholder="Įveskite elektros sumą">
+
+    <label for="komunaliniai">Komunaliniai</label>
+    <input id="komunaliniai" type="number" placeholder="Įveskite komunalinių sumą">
+
+    <label for="sildymas">Šildymas</label>
+    <input id="sildymas" type="number" placeholder="Įveskite šildymo sumą">
+
+    <button onclick="skaiciuoti()">Skaičiuoti</button>
+
+    <div id="rezultatas" class="result" style="display:none;">
+      <span id="rezultatoTekstas"></span>
+      <i class="fa-regular fa-copy copy-icon" onclick="kopijuoti()"></i>
+    </div>
+  </main>
+
+  <script>
+    function skaiciuoti() {
+      const vanduo = Number(document.getElementById('vanduo').value) || 0;
+      const elektra = Number(document.getElementById('elektra').value) || 0;
+      const komunaliniai = Number(document.getElementById('komunaliniai').value) || 0;
+      const sildymas = Number(document.getElementById('sildymas').value) || 0;
+      const nuoma = 600;
+
+      const suma = vanduo + elektra + komunaliniai + sildymas + nuoma;
+
+      const tekstas = `${vanduo} + ${elektra} + ${komunaliniai} + ${sildymas} + ${nuoma} = ${suma}`;
+      document.getElementById('rezultatoTekstas').textContent = tekstas;
+      document.getElementById('rezultatas').style.display = 'flex';
+    }
+
+    function kopijuoti() {
+      const tekstas = document.getElementById('rezultatoTekstas').textContent;
+      navigator.clipboard.writeText(tekstas).then(() => {
+        const icon = document.querySelector('.copy-icon');
+        icon.classList.remove('fa-copy');
+        icon.classList.add('fa-check');
+        setTimeout(() => {
+          icon.classList.remove('fa-check');
+          icon.classList.add('fa-copy');
+        }, 1000);
+      });
+    }
+  </script>
+
+</body>
+</html>
