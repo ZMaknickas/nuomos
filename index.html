@@ -49,8 +49,12 @@
       const nuoma = 600;
 
       const suma = vanduo + elektra + komunaliniai + sildymas + nuoma;
+      
+      const date = new Date();
+      const data = date.getMonth();
+      const str=["sausis", "vasaris", "kovas", "balandis", "gegužė", "birželis", "liepa", "rugpjūtis", "rugsėjis", "spalis", "lapkritis", "gruodis"];
 
-      const tekstas = `${vanduo} + ${elektra} + ${komunaliniai} + ${sildymas} + ${nuoma} = ${suma}`;
+      const tekstas = `${str[data-1]} ${vanduo} + ${elektra} + ${komunaliniai} + ${sildymas} + ${nuoma} = ${suma}`;
       document.getElementById('rezultatoTekstas').textContent = tekstas;
       document.getElementById('rezultatas').style.display = 'flex';
     }
