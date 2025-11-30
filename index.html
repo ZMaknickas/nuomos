@@ -46,7 +46,7 @@
       const elektra = Number(document.getElementById('elektra').value) || 0;
       const komunaliniai = Number(document.getElementById('komunaliniai').value) || 0;
       const sildymas = Number(document.getElementById('sildymas').value) || 0;
-      const nuoma = 600;
+      const nuoma = '+x';
 
       const suma = vanduo + elektra + komunaliniai + sildymas + nuoma;
       
@@ -54,7 +54,7 @@
       const data = date.getMonth();
       const str=["sausis", "vasaris", "kovas", "balandis", "gegužė", "birželis", "liepa", "rugpjūtis", "rugsėjis", "spalis", "lapkritis", "gruodis"];
 
-      const tekstas = `${str[data-1]} ${vanduo} + ${elektra} + ${komunaliniai} + ${sildymas} + ${nuoma} = ${suma}`;
+      const tekstas = `${str[data-1]} ${vanduo} + ${elektra} + ${komunaliniai} + ${sildymas} + ${} = ${suma}`;
       document.getElementById('rezultatoTekstas').textContent = tekstas;
       document.getElementById('rezultatas').style.display = 'flex';
     }
